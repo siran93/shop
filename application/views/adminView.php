@@ -59,7 +59,7 @@
     </div>
 </div>
 <div class="clear"></div>
-
+<!--!!!!-->
         </div><!-- bacvel e navbar.php-um -->
     </div><!-- bacvel e navbar.php-um -->
     <!--/.container-->
