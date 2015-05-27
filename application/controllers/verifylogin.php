@@ -27,9 +27,14 @@
 
 		function checkDatabase($password){
 			$username = $this->input->post('username');//Field validation succeeded.  Validate against database
-	  
 			$result = $this->user->login($username, $password); //query the database
+
+			
+
 			if($result){
+				$email = $result[0]->email;
+	  			$activated = $this->user->activated($email);
+				if($this->user->activated($email) == 0){
 				$sess_array = array();
 				foreach($result as $row){
 					$sess_array = array(
@@ -39,6 +44,10 @@
 					$this->session->set_userdata('logged_in', $sess_array);
 				}
 				return TRUE;
+				}else{
+					$this->form_validation->set_message('checkDatabase', 'Please Confirm your register');
+					return false;
+				}
 			}else{
 				$this->form_validation->set_message('checkDatabase', 'Invalid username or password');
 				return false;

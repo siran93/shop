@@ -7,6 +7,14 @@
 				<span class="errorR"><?=form_error('username');?></span><br>
 			<input type="password" name="password" placeholder='Password'>
 				<span class="errorR"><?=form_error('password');?></span><br>
+			<input type="text" name="email" placeholder="Email" value="<?=set_value('email');?>">
+				<span class="errorR"><?=form_error('email');?></span><br>
+				<?php 
+					if(!empty($data)){
+						echo $data['msg'];
+					}
+
+				?>
 			<input type="submit" name="register" value="Register" class="button buttons_hover">
 			<a href="<?=base_url('login')?>" class="register_a buttons_hover">Login</a>
 		</form>
